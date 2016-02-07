@@ -1,6 +1,6 @@
 Package.describe({
   summary: "A file loader ",
-  version: "0.0.2",
+  version: "0.1.0",
   git:"https://github.com/elmarti/all-file-loader"
 });
 
