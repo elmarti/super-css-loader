@@ -7,5 +7,7 @@ Package.describe({
 Package.onUse(function(api){
   api.addFiles('core.js', 'client');
   api.export('allFileLoader');
+   api.use(['ecmascript']);
+  api.imply(['ecmascript']);
 });
 
