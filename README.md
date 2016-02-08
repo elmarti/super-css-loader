@@ -1,36 +1,46 @@
-# all-file-loader
+# super-css-loader
 
-all-file-loader lets you load css/js the easy way
+super-css-loader lets you load and remove CSS the easy way
 
 * param1: url - root is public folder, urls can be used aswell
-* param2 : options (optional) - an set of attributes to append to the load element (null, if not used)
-* param3 : callback (optional) 
+* param2 : attributes (optional) - a set of attributes to append to the load element (you must set to null, if not used)
+* param3 : options (optional) contains the id you would like to assign to the CSS ( you must set to null if not used, a random id will be assigned)
+* param4 : callback (optional) 
+* return : an object containing the element object and the id
 
-###### Load CSS into a single page
-After the below template is destroyed, the CSS will be removed from the application.
+### Load static (can be removed) CSS into a single page
+If you load in onRendered(), there is sometimes a moment where the page appears without CSS - this is not the case with onCreated()
 ```javascript
 
-Template.parent_template.onRendered(function() {
-    allFileLoader.loadCSS("/front.css", 
+Template.parent_template.onCreated(function() {
+    superCSSLoader.loadStatic("/front.css", 
         {
             charset:"utf-8"
-        }, 
-        function() {
-            console.log("CSS loaded!");
+        },{
+        id:"myCSSID"
+        },
+        function(data) {
+            //id to access span>link element
+            console.log(data.id); 
+            //the HTML element
+            console.log(data.element);
         }
     );
 });
+
+let cssData = superCSSLoader.loadStatic("/front.css", 
+        {
+            charset:"utf-8"
+        },{
+        id:"myCSSID"
+        }
+    );
 ```
 
-###### Load JS into a single page 
-After the template is destroyed, the JS will be removed from the application
+###Removing the CSS 
+You simply need to destroy the element containing the CSS 
 ```javascript
-Template.parent_template.onRendered(function() {
-    allFileLoader.loadJS("http://www.url.com/random.js", 
-        null, 
-        function() {
-            console.log("JS loaded!");
-        }
-    );
-});
+$("#assignedID").remove();
 ```
+#TODO
+* add non static load type

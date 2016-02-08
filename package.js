@@ -1,7 +1,7 @@
 Package.describe({
   name:"elmarti:super-css-loader",
   summary: "Load and remove css files quickly and easily,",
-  version: "0.2.1",
+  version: "0.2.4",
   git: "https://github.com/elmarti/super-css-loader"
 });
 
