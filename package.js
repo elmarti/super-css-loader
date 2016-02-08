@@ -1,13 +1,13 @@
 Package.describe({
-  summary: "A file loader ",
-  version: "0.1.2",
-  git:"https://github.com/elmarti/all-file-loader"
+  name:"elmarti:super-css-loader",
+  summary: "Load and remove css files quickly and easily,",
+  version: "0.2.1",
+  git: "https://github.com/elmarti/super-css-loader"
 });
 
-Package.onUse(function(api){
+Package.onUse(function(api) {
   api.addFiles('core.js', 'client');
-  api.export('allFileLoader');
-   api.use(['ecmascript@0.1.6']);
-  api.imply(['ecmascript@0.1.6']);
+  api.export('superCSSLoader');
+  api.use(['ecmascript@0.1.6', 'jquery@1.11.3']);
+  api.imply(['ecmascript@0.1.6', 'jquery@1.11.3']);
 });
-
